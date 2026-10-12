@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suas datas de 2027 — Aquário</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Tipografia: as fontes reais do site. Plantagenet Cherokee e Avenir existem
+       no Mac e no iPhone; fora deles entram Marcellus e Mulish, que são as
+       substitutas mais próximas disponíveis no Google Fonts. */
+    --titulo:'Plantagenet Cherokee',Marcellus,Georgia,'Times New Roman',serif;
+    --texto:Avenir,'Avenir Next',Mulish,'Segoe UI',system-ui,sans-serif;
+
+    /* ---- paleta Marcia Fervienza ---- */
+    --realce:#bd4239;--realce-cheio:#cc483e;--realce-vivo:#FA584C;  /* coral do site (#FA584C), escurecido para texto */
+    --bom:#1b7972;           /* teal, para o que é favorável */
+    --tinta:#1b1715;
+    --papel:#ffffff;
+    --linha:#d9e0e9;
+    --suave:#766a67;
+    --veu:#eef1f5;
+  }
+  /* Sem modo escuro: o widget vive dentro de uma página clara, e um painel
+     escuro no meio dela leria como defeito, não como preferência. */
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--tinta);
+    font:300 16.5px/1.6 var(--texto);-webkit-text-size-adjust:100%}
+  .env{max-width:680px;margin:0 auto;padding:28px 16px 40px}
+  h1{font:400 clamp(27px,6.2vw,38px)/1.15 var(--titulo);margin:0 0 6px;letter-spacing:.005em}
+  h1 .g{color:var(--realce);margin-right:.35em}
+  .sub{color:var(--suave);font-size:15px;margin:0 0 26px}
+  .cartao{border:1px solid var(--linha);border-radius:14px;padding:20px;margin:0 0 22px;
+    background:var(--veu)}
+  label{display:block;font:400 17px/1 var(--titulo);letter-spacing:.02em;text-transform:uppercase;
+    color:var(--suave);margin:0 0 9px}
+  .campos{display:flex;gap:10px;flex-wrap:wrap}
+  input,button{font:inherit;padding:11px 13px;border-radius:9px;border:1px solid var(--linha);
+    background:var(--papel);color:var(--tinta)}
+  input[type=date]{flex:1 1 170px;min-width:0}
+  input[type=time]{flex:0 1 120px}
+  button{background:var(--realce-cheio);color:#fff;border-color:transparent;cursor:pointer;
+    font:400 19px/1 var(--titulo);letter-spacing:.04em;padding:12px 20px}
+  button:hover{filter:brightness(1.08)}
+  .dica{font-size:13px;color:var(--suave);margin:10px 0 0}
+  .res{margin:20px 0 0}
+  .grau{font-size:15px;color:var(--suave);margin:0 0 14px}
+  .grau b{color:var(--tinta);font-size:19px}
+  .proximo{border-left:3px solid var(--realce);padding:2px 0 2px 14px;margin:0 0 18px}
+  .proximo .et{font:400 15px/1 var(--titulo);letter-spacing:.04em;text-transform:uppercase;
+    color:var(--realce);display:block;margin-bottom:6px}
+  ul.lista{list-style:none;margin:0;padding:0}
+  ul.lista li{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--linha)}
+  ul.lista li:first-child{border-top:0}
+  .dt{flex:0 0 58px;font-family:var(--texto);font-variant-numeric:tabular-nums;font-size:14px;font-weight:600;color:var(--realce)}
+  .ev{flex:1}
+  .ev .pl{font-weight:600}
+  .pass{font-size:12px;color:var(--suave);font-family:var(--texto);font-variant-numeric:tabular-nums}
+  .vazio{color:var(--suave);font-style:italic}
+  details{border-top:1px solid var(--linha);padding:18px 0 0;margin:26px 0 0}
+  summary{cursor:pointer;font:400 18px/1 var(--titulo);letter-spacing:.02em;
+    text-transform:uppercase;color:var(--realce);list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"+ ";font-weight:400}
+  details[open] summary::before{content:"– "}
+  table{width:100%;border-collapse:collapse;margin:18px 0 0;font-size:15px}
+  th{text-align:left;font:400 15px/1 var(--titulo);letter-spacing:.035em;text-transform:uppercase;
+    color:var(--suave);padding:0 8px 8px 0;border-bottom:1px solid var(--linha)}
+  td{padding:9px 8px 9px 0;border-bottom:1px solid var(--linha);vertical-align:top}
+  td.g{font-family:var(--texto);font-variant-numeric:tabular-nums;font-weight:600;color:var(--realce);white-space:nowrap}
+  td.d{font-family:var(--texto);font-variant-numeric:tabular-nums;font-size:13px;color:var(--suave);white-space:nowrap}
+  .eclip{margin:18px 0 0;padding:14px 0 0;border-top:1px dashed var(--linha)}
+  .eclip .et{font:400 15px/1 var(--titulo);letter-spacing:.04em;text-transform:uppercase;
+    color:var(--realce);display:block;margin-bottom:8px}
+  .borda{font-size:14px;color:var(--suave);margin:4px 0 0;line-height:1.55}
+  .borda b{color:var(--tinta);font-weight:600}
+  .glos dl{margin:12px 0 0}
+  .glos dt{font:400 18px/1.2 var(--titulo);letter-spacing:.035em;color:var(--realce);margin:14px 0 3px}
+  .glos dd{margin:0;font-size:14.5px;line-height:1.6;color:var(--suave)}
+  .glos dd b{color:var(--tinta)}
+  .obs{font-size:13.5px;color:var(--suave);margin:10px 0 0;padding:11px 13px;border-radius:9px;
+       background:var(--veu);line-height:1.55}
+  .obs b{color:var(--tinta)}
+  .nota{font-size:14px;color:var(--suave);margin:26px 0 0;padding:16px;border-radius:11px;
+    background:var(--veu)}
+  .nota b{color:var(--tinta)}
+</style>
+<div class="env">
+  <h1><span class="g">♍</span>Suas datas de 2027</h1>
+  <p class="sub">Aquário · quando os planetas lentos tocam exatamente o seu grau. Horários de Brasília.</p>
+
+  <div class="cartao">
+    <label for="nasc">Sua data de nascimento</label>
+    <div class="campos">
+      <input type="date" id="nasc" min="1920-01-01" max="2027-12-31">
+      <input type="time" id="hora" value="12:00" aria-label="Hora de nascimento">
+      <button id="btn">Ver minhas datas</button>
+    </div>
+    <p class="dica">A hora é opcional — sem ela, uso meio-dia. Perto da virada de um grau, uma hora de diferença muda o resultado.</p>
+    <div class="res" id="res"></div>
+    <div class="res" id="resecl"></div>
+  </div>
+
+  <details>
+    <summary>Ver a tabela completa, grau por grau</summary>
+    <table>
+      <thead><tr><th>Grau</th><th>Datas de nascimento</th><th>Passagens em 2027</th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </details>
+
+
+  <details class="glos">
+    <summary>As palavras que eu uso</summary>
+    <dl>
+      <dt>Grau</dt><dd>Cada signo tem trinta graus, numerados de 0 a 29. O Sol anda cerca de um grau por dia, e é por isso que a sua data de nascimento aponta um grau.</dd>
+      <dt>Orbe</dt><dd>A margem de distância que eu aceito para dizer que um planeta ou um eclipse está mexendo com um ponto do mapa. Para eclipse eu uso cinco graus antes e cinco depois. Quanto menor a distância, mais forte.</dd>
+      <dt>Ingresso</dt><dd>O momento exato em que um planeta sai de um signo e entra no seguinte.</dd>
+      <dt>Estação</dt><dd>O dia em que o planeta parece parar no céu e trocar de sentido: fica retrógrado, ou volta a andar direto.</dd>
+      <dt>Retrógrado</dt><dd>Quando o planeta parece andar para trás, visto da Terra. É fase de rever o que já foi feito, não de começar.</dd>
+      <dt>Sombra pré e sombra pós</dt><dd>O trecho do céu que o planeta percorre pouco antes de ficar retrógrado (sombra pré, fase de cautela) e depois de voltar a andar direto, até passar de novo pelo mesmo ponto (sombra pós, fase de resolver). A sombra pós não contraindica nada.</dd>
+      <dt>Janela limpa</dt><dd>Um período sem eclipse na margem e sem Mercúrio em cautela ou retrógrado. É quando vale fechar coisas.</dd>
+      <dt>Lunação</dt><dd>A Lua Nova e a Lua Cheia, os dois momentos em que Sol e Lua ficam no mesmo grau — juntos na Lua Nova, opostos na Lua Cheia.</dd>
+      <dt>Casa</dt><dd>A área da vida onde o trânsito cai. Eu conto as casas por signo inteiro a partir do ascendente.</dd>
+    </dl>
+  </details>
+
+  <p class="nota">
+    <b>Como ler.</b> Cada linha é um contato exato de um planeta lento ao seu grau — o dia em que o trânsito
+    chega ao ponto, não o período inteiro de influência. Quando aparece a mesma passagem duas ou três vezes,
+    é o planeta indo, voltando na retrogradação e passando de novo: a terceira é a que fecha o assunto.
+    As datas de nascimento são aproximadas, porque o Sol muda de grau em horas diferentes a cada ano:
+    quando aparecem duas datas na mesma linha, a sua é uma das duas, dependendo do ano em que você nasceu.
+    A tabela traz o grau inteiro; o widget acima mostra o seu grau com os minutos, que é o número do seu mapa.    A tabela grau por grau cobre Júpiter, Saturno, Urano, Netuno, Plutão e Quíron. Lilith entra só no
+    bloco por signo e casa, e não na conta de grau exato.
+    O grau de cada eclipse é o grau da lunação exata — o instante em que Sol e Lua ficam no mesmo grau,
+    por conjunção no eclipse solar e por oposição no lunar.
+    Se você tem o seu mapa, use o grau do seu Sol ou do seu ascendente.
+  </p>
+</div>
+<script>
+const SIGNO="Aquário", IDX=10, DADOS={"9": [{"p": "Saturno", "a": "sextil", "iso": "2027-01-14T10:38", "br": "14/01"}, {"p": "Urano", "a": "trígono", "iso": "2027-07-28T23:17", "br": "28/07"}, {"p": "Urano", "a": "trígono", "iso": "2027-11-03T12:27", "br": "03/11"}], "10": [{"p": "Saturno", "a": "sextil", "iso": "2027-01-28T14:02", "br": "28/01"}], "11": [{"p": "Saturno", "a": "sextil", "iso": "2027-02-08T23:25", "br": "08/02"}], "12": [{"p": "Saturno", "a": "sextil", "iso": "2027-02-18T23:56", "br": "18/02"}], "13": [{"p": "Saturno", "a": "sextil", "iso": "2027-02-28T05:00", "br": "28/02"}], "14": [{"p": "Saturno", "a": "sextil", "iso": "2027-03-08T21:18", "br": "08/03"}], "15": [{"p": "Saturno", "a": "sextil", "iso": "2027-03-17T05:13", "br": "17/03"}], "16": [{"p": "Saturno", "a": "sextil", "iso": "2027-03-25T07:51", "br": "25/03"}], "17": [{"p": "Saturno", "a": "sextil", "iso": "2027-04-02T07:18", "br": "02/04"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-04-11T06:27", "br": "11/04"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-04-14T16:03", "br": "14/04"}], "18": [{"p": "Júpiter", "a": "oposição", "iso": "2027-03-18T13:35", "br": "18/03"}, {"p": "Saturno", "a": "sextil", "iso": "2027-04-10T05:31", "br": "10/04"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-05-08T18:17", "br": "08/05"}], "19": [{"p": "Júpiter", "a": "oposição", "iso": "2027-03-07T14:53", "br": "07/03"}, {"p": "Saturno", "a": "sextil", "iso": "2027-04-18T04:19", "br": "18/04"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-05-19T20:06", "br": "19/05"}], "20": [{"p": "Júpiter", "a": "oposição", "iso": "2027-02-26T18:27", "br": "26/02"}, {"p": "Saturno", "a": "sextil", "iso": "2027-04-26T05:30", "br": "26/04"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-05-28T14:39", "br": "28/05"}], "21": [{"p": "Júpiter", "a": "oposição", "iso": "2027-02-18T19:10", "br": "18/02"}, {"p": "Saturno", "a": "sextil", "iso": "2027-05-04T10:58", "br": "04/05"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-06-05T05:06", "br": "05/06"}], "22": [{"p": "Júpiter", "a": "oposição", "iso": "2027-02-11T04:42", "br": "11/02"}, {"p": "Saturno", "a": "sextil", "iso": "2027-05-12T23:06", "br": "12/05"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-06-12T01:57", "br": "12/06"}, {"p": "Saturno", "a": "sextil", "iso": "2027-11-20T14:37", "br": "20/11"}], "23": [{"p": "Júpiter", "a": "oposição", "iso": "2027-02-03T14:47", "br": "03/02"}, {"p": "Saturno", "a": "sextil", "iso": "2027-05-21T21:23", "br": "21/05"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-06-18T10:46", "br": "18/06"}, {"p": "Saturno", "a": "sextil", "iso": "2027-11-05T04:09", "br": "05/11"}], "24": [{"p": "Júpiter", "a": "oposição", "iso": "2027-01-26T16:44", "br": "26/01"}, {"p": "Saturno", "a": "sextil", "iso": "2027-05-31T10:18", "br": "31/05"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-06-24T10:43", "br": "24/06"}, {"p": "Saturno", "a": "sextil", "iso": "2027-10-23T01:57", "br": "23/10"}], "25": [{"p": "Júpiter", "a": "oposição", "iso": "2027-01-17T22:19", "br": "17/01"}, {"p": "Saturno", "a": "sextil", "iso": "2027-06-10T21:50", "br": "10/06"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-06-30T03:50", "br": "30/06"}, {"p": "Saturno", "a": "sextil", "iso": "2027-10-10T11:26", "br": "10/10"}], "26": [{"p": "Júpiter", "a": "oposição", "iso": "2027-01-07T04:28", "br": "07/01"}, {"p": "Saturno", "a": "sextil", "iso": "2027-06-22T23:55", "br": "22/06"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-07-05T15:27", "br": "05/07"}, {"p": "Saturno", "a": "sextil", "iso": "2027-09-27T03:48", "br": "27/09"}], "27": [{"p": "Quíron", "a": "sextil", "iso": "2027-02-15T05:18", "br": "15/02"}, {"p": "Saturno", "a": "sextil", "iso": "2027-07-08T11:01", "br": "08/07"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-07-10T22:44", "br": "10/07"}, {"p": "Saturno", "a": "sextil", "iso": "2027-09-11T00:55", "br": "11/09"}], "2": [{"p": "Urano", "a": "trígono", "iso": "2027-01-12T04:38", "br": "12/01"}, {"p": "Netuno", "a": "sextil", "iso": "2027-01-18T15:20", "br": "18/01"}, {"p": "Urano", "a": "trígono", "iso": "2027-03-07T06:36", "br": "07/03"}, {"p": "Quíron", "a": "quadratura", "iso": "2027-05-17T22:51", "br": "17/05"}, {"p": "Quíron", "a": "quadratura", "iso": "2027-11-01T15:21", "br": "01/11"}], "3": [{"p": "Netuno", "a": "sextil", "iso": "2027-02-23T06:12", "br": "23/02"}, {"p": "Urano", "a": "trígono", "iso": "2027-04-05T14:57", "br": "05/04"}, {"p": "Quíron", "a": "quadratura", "iso": "2027-06-05T20:20", "br": "05/06"}, {"p": "Quíron", "a": "quadratura", "iso": "2027-10-11T06:48", "br": "11/10"}], "4": [{"p": "Netuno", "a": "sextil", "iso": "2027-03-22T14:43", "br": "22/03"}, {"p": "Urano", "a": "trígono", "iso": "2027-04-26T02:41", "br": "26/04"}, {"p": "Quíron", "a": "quadratura", "iso": "2027-06-30T01:24", "br": "30/06"}, {"p": "Quíron", "a": "quadratura", "iso": "2027-09-16T03:15", "br": "16/09"}, {"p": "Netuno", "a": "sextil", "iso": "2027-11-22T10:05", "br": "22/11"}], "5": [{"p": "Plutão", "a": "conjunção", "iso": "2027-01-21T19:52", "br": "21/01"}, {"p": "Netuno", "a": "sextil", "iso": "2027-04-18T12:50", "br": "18/04"}, {"p": "Urano", "a": "trígono", "iso": "2027-05-14T01:35", "br": "14/05"}, {"p": "Plutão", "a": "conjunção", "iso": "2027-09-14T12:05", "br": "14/09"}, {"p": "Netuno", "a": "sextil", "iso": "2027-10-07T02:41", "br": "07/10"}, {"p": "Plutão", "a": "conjunção", "iso": "2027-11-19T17:43", "br": "19/11"}], "6": [{"p": "Plutão", "a": "conjunção", "iso": "2027-02-23T05:41", "br": "23/02"}, {"p": "Netuno", "a": "sextil", "iso": "2027-05-20T21:04", "br": "20/05"}, {"p": "Urano", "a": "trígono", "iso": "2027-05-31T05:00", "br": "31/05"}, {"p": "Plutão", "a": "conjunção", "iso": "2027-07-27T09:45", "br": "27/07"}, {"p": "Netuno", "a": "sextil", "iso": "2027-08-30T12:40", "br": "30/08"}], "7": [{"p": "Plutão", "a": "conjunção", "iso": "2027-04-10T14:23", "br": "10/04"}, {"p": "Plutão", "a": "conjunção", "iso": "2027-06-05T16:32", "br": "05/06"}, {"p": "Urano", "a": "trígono", "iso": "2027-06-17T13:42", "br": "17/06"}, {"p": "Urano", "a": "trígono", "iso": "2027-12-23T05:10", "br": "23/12"}], "8": [{"p": "Urano", "a": "trígono", "iso": "2027-07-06T08:01", "br": "06/07"}, {"p": "Urano", "a": "trígono", "iso": "2027-11-28T15:02", "br": "28/11"}], "28": [{"p": "Quíron", "a": "sextil", "iso": "2027-03-10T06:43", "br": "10/03"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-07-16T02:29", "br": "16/07"}], "29": [{"p": "Quíron", "a": "sextil", "iso": "2027-03-28T16:39", "br": "28/03"}, {"p": "Júpiter", "a": "oposição", "iso": "2027-07-21T03:21", "br": "21/07"}], "0": [{"p": "Quíron", "a": "quadratura", "iso": "2027-04-14T11:58", "br": "14/04"}], "1": [{"p": "Quíron", "a": "quadratura", "iso": "2027-04-30T22:32", "br": "30/04"}, {"p": "Quíron", "a": "quadratura", "iso": "2027-11-24T12:37", "br": "24/11"}]}, PESO={"Plutão": 6, "Saturno": 5, "Urano": 4, "Netuno": 4, "Quíron": 3, "Júpiter": 2}, ECL=[{"data": "06/02", "tipo": "Solar anular", "g": 17.617, "casa": 1, "asp": "conjunção"}, {"data": "20/02", "tipo": "Lunar penumbral", "g": 2.083, "casa": 8, "asp": "quincunce"}, {"data": "18/07", "tipo": "Lunar penumbral", "g": 25.8, "casa": 12, "asp": "semisextil"}, {"data": "02/08", "tipo": "Solar total", "g": 9.917, "casa": 7, "asp": "oposição"}, {"data": "17/08", "tipo": "Lunar penumbral", "g": 24.183, "casa": 1, "asp": "conjunção"}];
+const CASA={1:'você mesmo',2:'o seu dinheiro',3:'a palavra e o entorno',4:'a casa e a família',5:'a criação e o romance',6:'a rotina e o corpo',7:'o outro e as parcerias',8:'o dinheiro dividido',9:'o horizonte e o estudo',10:'a carreira',11:'os grupos e a rede',12:'os bastidores'};
+
+/* longitude aparente do Sol — precisão de ~0,01º, suficiente para o grau */
+function solLon(y,m,d,h,mi){
+  if(m<=2){y-=1;m+=12;}
+  const A=Math.floor(y/100), B=2-A+Math.floor(A/4);
+  const jd=Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5+(h+mi/60+3)/24;
+  const T=(jd-2451545)/36525;
+  const L0=280.46646+36000.76983*T+0.0003032*T*T;
+  const M=357.52911+35999.05029*T-0.0001537*T*T;
+  const Mr=M*Math.PI/180;
+  const C=(1.914602-0.004817*T-0.000014*T*T)*Math.sin(Mr)
+         +(0.019993-0.000101*T)*Math.sin(2*Mr)+0.000289*Math.sin(3*Mr);
+  const O=125.04-1934.136*T;
+  return ((L0+C-0.00569-0.00478*Math.sin(O*Math.PI/180))%360+360)%360;
+}
+const fmtGrau=g=>{const i=Math.floor(g),m=Math.round((g-i)*60);return m===60?`${i+1}º00'`:`${i}º${String(m).padStart(2,'0')}'`};
+
+function linha(x,hoje){
+  const futuro = x.iso.slice(0,10) >= hoje;
+  return `<li><span class="dt">${x.br}</span><span class="ev"><span class="pl">${x.p}</span> em ${x.a}${futuro?'':' <span class="pass">já passou</span>'}</span></li>`;
+}
+
+function mostrar(){
+  const v=document.getElementById('nasc').value, t=document.getElementById('hora').value||'12:00';
+  const res=document.getElementById('res');
+  if(!v){res.innerHTML='<p class="vazio">Escolha a sua data de nascimento.</p>';return}
+  const [Y,Mo,D]=v.split('-').map(Number), [H,Mi]=t.split(':').map(Number);
+  const L=solLon(Y,Mo,D,H,Mi), si=Math.floor(L/30), g=L%30, gi=Math.floor(g);
+  if(si!==IDX){
+    res.innerHTML=`<p class="vazio">Nessa data o Sol estava em ${['Áries','Touro','Gêmeos','Câncer','Leão','Virgem','Libra','Escorpião','Sagitário','Capricórnio','Aquário','Peixes'][si]}, não em ${SIGNO}. Procure a página do seu signo.</p>`;
+    return;
+  }
+  const beira = (g-gi)<0.3 || (g-gi)>0.7;
+  const itens=(DADOS[gi]||[]).slice().sort((a,b)=>a.iso<b.iso?-1:1);
+  const hoje=new Date().toISOString().slice(0,10);
+  let html=`<p class="grau">Seu Sol está em <b>${SIGNO} ${fmtGrau(g)}</b>${beira?' — perto da virada do grau, vale conferir no seu mapa':''}.</p>`;
+  if(!itens.length){
+    html+='<p class="vazio">Nenhum planeta lento toca esse grau em 2027. É um ano de poucos trânsitos exatos para você — e isso também é informação.</p>';
+  }else{
+    const prox=itens.find(x=>x.iso.slice(0,10)>=hoje);
+    if(prox) html+=`<div class="proximo"><span class="et">O próximo</span><b>${prox.br}</b> — ${prox.p} em ${prox.a}</div>`;
+    html+=`<ul class="lista">${itens.map(x=>linha(x,hoje)).join('')}</ul>`;
+  }
+  res.innerHTML=html;
+
+  /* eclipses que caem perto do grau da pessoa — orbe de 5º para cada lado,
+     com os fortes em destaque e os de borda numa linha mais discreta */
+  const forca=d=> d<=1 ? 'praticamente exato' : 'bem perto';
+  const orbe=d=> d<0.25 ? 'menos de um quarto de grau' : fmtGrau(d);
+  const perto=ECL.map(e=>({...e,dif:Math.abs(e.g-g)})).filter(e=>e.dif<=5)
+                 .sort((a,b)=>a.dif-b.dif);
+  const fortes=perto.filter(e=>e.dif<=2.5), borda=perto.filter(e=>e.dif>2.5);
+  const re=document.getElementById('resecl');
+  let he='<div class="eclip"><span class="et">Eclipses no seu grau</span>';
+  if(fortes.length){
+    he+=fortes.map(e=>`<p style="margin:0 0 8px">O <b>${e.tipo.toLowerCase()} de ${e.data}</b> cai a ${orbe(e.dif)} do seu Sol — ${e.asp} na casa ${e.casa}, ${CASA[e.casa]}. Está <b>${forca(e.dif)}</b>.</p>`).join('');
+  }else{
+    he+='<p style="margin:0 0 8px">Nenhum dos cinco eclipses de 2027 cai a menos de dois graus e meio do seu Sol. Para você, o ano se decide mais pelos planetas lentos da lista acima do que pelos eclipses.</p>';
+  }
+  if(borda.length){
+    he+=`<p class="borda">Ainda dentro da minha margem de cinco graus, mas já na borda: ${borda.map(e=>`${e.tipo.toLowerCase()} de <b>${e.data}</b>, a ${orbe(e.dif)} (${e.asp} na casa ${e.casa})`).join('; ')}.</p>`;
+  }
+  he+='<p class="obs">Eu trabalho com uma margem de <b>cinco graus antes e cinco graus depois</b>, porque eclipse é evento forte e alcança mais longe que um trânsito comum. Quanto mais perto do grau exato, maior a chance de o período produzir um acontecimento concreto. Na borda da margem, o mais comum é o assunto mexer por dentro sem que nada se resolva por fora.</p></div>';
+  re.innerHTML=he;
+}
+document.getElementById('btn').addEventListener('click',mostrar);
+document.getElementById('nasc').addEventListener('change',mostrar);
+
+/* tabela completa */
+const DT={"0": ["20/01", "21/01"], "1": ["21/01", "22/01"], "2": ["22/01", "23/01"], "3": ["23/01", "24/01"], "4": ["24/01", "25/01"], "5": ["25/01", "26/01"], "6": ["26/01", "27/01"], "7": ["27/01", "28/01"], "8": ["28/01", "29/01"], "9": ["29/01", "30/01"], "10": ["30/01", "31/01"], "11": ["31/01", "01/02"], "12": ["01/02", "02/02"], "13": ["02/02", "03/02"], "14": ["03/02", "04/02"], "15": ["04/02", "05/02"], "16": ["05/02", "06/02"], "17": ["06/02", "07/02"], "18": ["07/02", "08/02"], "19": ["08/02", "09/02"], "20": ["09/02", "10/02"], "21": ["10/02", "11/02"], "22": ["11/02", "12/02"], "23": ["12/02", "13/02"], "24": ["12/02", "13/02", "14/02"], "25": ["13/02", "14/02", "15/02"], "26": ["14/02", "15/02", "16/02"], "27": ["15/02", "16/02", "17/02"], "28": ["16/02", "17/02", "18/02"], "29": ["17/02", "18/02", "19/02"]};
+const tb=document.getElementById('tb');
+tb.innerHTML=Object.keys(DADOS).map(Number).sort((a,b)=>a-b).map(g=>{
+  const its=DADOS[g].slice().sort((a,b)=>a.iso<b.iso?-1:1);
+  const ord=its.slice().sort((a,b)=>(PESO[b.p]||0)-(PESO[a.p]||0));
+  const grupos={};
+  ord.forEach(x=>{const k=x.p+' em '+x.a;(grupos[k]=grupos[k]||[]).push(x.br)});
+  const txt=Object.entries(grupos).map(([k,ds])=>`${k} — ${ds.join(', ')}`).join('<br>');
+  return `<tr><td class="g">${g}º</td><td class="d">${(DT[g]||[]).join(' ou ')}</td><td>${txt}</td></tr>`;
+}).join('');
+</script>
