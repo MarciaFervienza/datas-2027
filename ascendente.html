@@ -1,4 +1,4 @@
-<!-- versão: 13/10/2026 13h42 · 44a804f4 -->
+<!-- versão: 13/10/2026 13h53 · 87d2db99 -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <meta charset="utf-8">
@@ -73,7 +73,7 @@
   <p class="sub">Escolha o seu ascendente e veja onde cada trânsito do ano cai na sua vida. Horários de Brasília.</p>
   <div class="cartao">
     <label for="asc">O seu ascendente</label>
-    <select id="asc">
+    <select id="asc" aria-label="Signo do seu ascendente">
       <option value="">— escolha —</option>
       <option value="Áries">♈ Áries</option>
       <option value="Touro">♉ Touro</option>
@@ -89,7 +89,7 @@
       <option value="Peixes">♓ Peixes</option>
     </select>
     <label for="grau" style="margin-top:14px;display:block">O grau do ascendente <span class="opc">(se você souber)</span></label>
-    <input id="grau" type="number" min="0" max="29" step="1" placeholder="por exemplo: 27">
+    <input id="grau" type="number" min="0" max="29" step="1" placeholder="por exemplo: 27" aria-label="Grau do seu ascendente (0 a 29)">
     <p class="dica">Se você não sabe o seu ascendente, ele depende da hora e do lugar de nascimento — não dá para deduzir só da data. Vale levantar uma vez e guardar. O grau é opcional: sem ele a lista de casas sai igual, porque as casas são contadas por signo inteiro. Com ele eu consigo avisar duas coisas — se o seu ascendente está nos últimos graus do signo e se algum eclipse do ano cai perto dele.</p>
   </div>
   <div id="saida"></div>
