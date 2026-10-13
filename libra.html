@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Suas datas de 2027 — Libra</title>
@@ -79,9 +80,17 @@
   .glos dt{font:400 18px/1.2 var(--titulo);letter-spacing:.035em;color:var(--realce);margin:14px 0 3px}
   .glos dd{margin:0;font-size:14.5px;line-height:1.6;color:var(--suave)}
   .glos dd b{color:var(--tinta)}
+  .lida{font-size:14px;color:var(--suave);margin:0 0 10px}
+  .lida b{color:var(--tinta)}
+  .nota ul{margin:10px 0 0;padding:0 0 0 20px}
+  .nota li{margin:0 0 11px;line-height:1.6}
+  .nota li:last-child{margin-bottom:0}
   .obs{font-size:13.5px;color:var(--suave);margin:10px 0 0;padding:11px 13px;border-radius:9px;
        background:var(--veu);line-height:1.55}
+  .obs p{margin:0 0 9px}
+  .obs p:last-child{margin-bottom:0}
   .obs b{color:var(--tinta)}
+  .obs a{color:var(--realce);font-weight:600;text-decoration:none;border-bottom:1px solid var(--linha)}
   .nota{font-size:14px;color:var(--suave);margin:26px 0 0;padding:16px;border-radius:11px;
     background:var(--veu)}
   .nota b{color:var(--tinta)}
@@ -97,7 +106,7 @@
       <input type="time" id="hora" value="12:00" aria-label="Hora de nascimento">
       <button id="btn">Ver minhas datas</button>
     </div>
-    <p class="dica">A hora é opcional — sem ela, uso meio-dia. Perto da virada de um grau, uma hora de diferença muda o resultado.</p>
+    <p class="dica">O campo de data segue o formato do seu aparelho: no Brasil aparece dia/mês/ano. A hora é opcional — sem ela, uso meio-dia. Perto da virada de um grau, uma hora de diferença muda o resultado.</p>
     <div class="res" id="res"></div>
     <div class="res" id="resecl"></div>
   </div>
@@ -105,7 +114,7 @@
   <details>
     <summary>Ver a tabela completa, grau por grau</summary>
     <table>
-      <thead><tr><th>Grau</th><th>Datas de nascimento</th><th>Passagens em 2027</th></tr></thead>
+      <thead><tr><th>Grau</th><th>Nasceu por volta de</th><th>Passagens em 2027</th></tr></thead>
       <tbody id="tb"></tbody>
     </table>
   </details>
@@ -126,21 +135,27 @@
     </dl>
   </details>
 
-  <p class="nota">
-    <b>Como ler.</b> Cada linha é um contato exato de um planeta lento ao seu grau — o dia em que o trânsito
-    chega ao ponto, não o período inteiro de influência. Quando aparece a mesma passagem duas ou três vezes,
-    é o planeta indo, voltando na retrogradação e passando de novo: a terceira é a que fecha o assunto.
-    As datas de nascimento são aproximadas, porque o Sol muda de grau em horas diferentes a cada ano:
-    quando aparecem duas datas na mesma linha, a sua é uma das duas, dependendo do ano em que você nasceu.
-    A tabela traz o grau inteiro; o widget acima mostra o seu grau com os minutos, que é o número do seu mapa.    A tabela grau por grau cobre Júpiter, Saturno, Urano, Netuno, Plutão e Quíron. Lilith entra só no
-    bloco por signo e casa, e não na conta de grau exato.
-    O grau de cada eclipse é o grau da lunação exata — o instante em que Sol e Lua ficam no mesmo grau,
-    por conjunção no eclipse solar e por oposição no lunar.
-    Se você tem o seu mapa, use o grau do seu Sol ou do seu ascendente.
-  </p>
+  <div class="nota">
+    <b>Como ler</b>
+    <ul>
+      <li>Cada linha é <b>um contato exato</b> de um planeta lento ao seu grau: o dia em que o trânsito
+          chega ao ponto exato, não o período inteiro de influência.</li>
+      <li>Quando a mesma passagem aparece <b>duas ou três vezes</b>, é o planeta indo, voltando na
+          retrogradação e passando de novo. A terceira passagem costuma ser a que fecha o assunto.</li>
+      <li>Se você tem o seu mapa, use o grau do seu Sol ou do seu ascendente.</li>
+      <li>A tabela cobre <b>Júpiter, Saturno, Urano, Netuno, Plutão e Quíron</b>: os corpos que ficam
+          semanas ou meses em cima de um mesmo grau e ainda voltam a ele na retrogradação. <b>Lilith</b>
+          aparece por signo e casa, e não aqui, porque a Lua Negra média nunca fica retrógrada — passa
+          uma única vez por cada grau e não retorna. <b>Ceres, Palas, Juno e Vesta</b> não entram <i>nesta</i> tabela por outro
+          motivo: nesta página eles fazem mais sentido por signo, período e casa, que é a escala em que eles
+          se leem. Estão no texto da página.</li>
+      <li>O grau de cada eclipse é o da <b>lunação exata</b> — o instante em que Sol e Lua ficam no mesmo
+          grau, por conjunção no eclipse solar e por oposição no lunar.</li>
+    </ul>
+  </div>
 </div>
 <script>
-const SIGNO="Libra", IDX=6, DADOS={"9": [{"p": "Saturno", "a": "oposição", "iso": "2027-01-14T10:38", "br": "14/01"}, {"p": "Urano", "a": "trígono", "iso": "2027-07-28T23:17", "br": "28/07"}, {"p": "Urano", "a": "trígono", "iso": "2027-11-03T12:27", "br": "03/11"}], "10": [{"p": "Saturno", "a": "oposição", "iso": "2027-01-28T14:02", "br": "28/01"}], "11": [{"p": "Saturno", "a": "oposição", "iso": "2027-02-08T23:25", "br": "08/02"}], "12": [{"p": "Saturno", "a": "oposição", "iso": "2027-02-18T23:56", "br": "18/02"}], "13": [{"p": "Saturno", "a": "oposição", "iso": "2027-02-28T05:00", "br": "28/02"}], "14": [{"p": "Saturno", "a": "oposição", "iso": "2027-03-08T21:18", "br": "08/03"}], "15": [{"p": "Saturno", "a": "oposição", "iso": "2027-03-17T05:13", "br": "17/03"}], "16": [{"p": "Saturno", "a": "oposição", "iso": "2027-03-25T07:51", "br": "25/03"}], "17": [{"p": "Saturno", "a": "oposição", "iso": "2027-04-02T07:18", "br": "02/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-04-11T06:27", "br": "11/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-04-14T16:03", "br": "14/04"}], "18": [{"p": "Júpiter", "a": "sextil", "iso": "2027-03-18T13:35", "br": "18/03"}, {"p": "Saturno", "a": "oposição", "iso": "2027-04-10T05:31", "br": "10/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-05-08T18:17", "br": "08/05"}], "19": [{"p": "Júpiter", "a": "sextil", "iso": "2027-03-07T14:53", "br": "07/03"}, {"p": "Saturno", "a": "oposição", "iso": "2027-04-18T04:19", "br": "18/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-05-19T20:06", "br": "19/05"}], "20": [{"p": "Júpiter", "a": "sextil", "iso": "2027-02-26T18:27", "br": "26/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-04-26T05:30", "br": "26/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-05-28T14:39", "br": "28/05"}], "21": [{"p": "Júpiter", "a": "sextil", "iso": "2027-02-18T19:10", "br": "18/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-05-04T10:58", "br": "04/05"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-05T05:06", "br": "05/06"}], "22": [{"p": "Júpiter", "a": "sextil", "iso": "2027-02-11T04:42", "br": "11/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-05-12T23:06", "br": "12/05"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-12T01:57", "br": "12/06"}, {"p": "Saturno", "a": "oposição", "iso": "2027-11-20T14:37", "br": "20/11"}], "23": [{"p": "Júpiter", "a": "sextil", "iso": "2027-02-03T14:47", "br": "03/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-05-21T21:23", "br": "21/05"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-18T10:46", "br": "18/06"}, {"p": "Saturno", "a": "oposição", "iso": "2027-11-05T04:09", "br": "05/11"}], "24": [{"p": "Júpiter", "a": "sextil", "iso": "2027-01-26T16:44", "br": "26/01"}, {"p": "Saturno", "a": "oposição", "iso": "2027-05-31T10:18", "br": "31/05"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-24T10:43", "br": "24/06"}, {"p": "Saturno", "a": "oposição", "iso": "2027-10-23T01:57", "br": "23/10"}], "25": [{"p": "Júpiter", "a": "sextil", "iso": "2027-01-17T22:19", "br": "17/01"}, {"p": "Saturno", "a": "oposição", "iso": "2027-06-10T21:50", "br": "10/06"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-30T03:50", "br": "30/06"}, {"p": "Saturno", "a": "oposição", "iso": "2027-10-10T11:26", "br": "10/10"}], "26": [{"p": "Júpiter", "a": "sextil", "iso": "2027-01-07T04:28", "br": "07/01"}, {"p": "Saturno", "a": "oposição", "iso": "2027-06-22T23:55", "br": "22/06"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-07-05T15:27", "br": "05/07"}, {"p": "Saturno", "a": "oposição", "iso": "2027-09-27T03:48", "br": "27/09"}], "27": [{"p": "Quíron", "a": "oposição", "iso": "2027-02-15T05:18", "br": "15/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-07-08T11:01", "br": "08/07"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-07-10T22:44", "br": "10/07"}, {"p": "Saturno", "a": "oposição", "iso": "2027-09-11T00:55", "br": "11/09"}], "2": [{"p": "Urano", "a": "trígono", "iso": "2027-01-12T04:38", "br": "12/01"}, {"p": "Netuno", "a": "oposição", "iso": "2027-01-18T15:20", "br": "18/01"}, {"p": "Urano", "a": "trígono", "iso": "2027-03-07T06:36", "br": "07/03"}], "3": [{"p": "Netuno", "a": "oposição", "iso": "2027-02-23T06:12", "br": "23/02"}, {"p": "Urano", "a": "trígono", "iso": "2027-04-05T14:57", "br": "05/04"}], "4": [{"p": "Netuno", "a": "oposição", "iso": "2027-03-22T14:43", "br": "22/03"}, {"p": "Urano", "a": "trígono", "iso": "2027-04-26T02:41", "br": "26/04"}, {"p": "Netuno", "a": "oposição", "iso": "2027-11-22T10:05", "br": "22/11"}], "5": [{"p": "Plutão", "a": "trígono", "iso": "2027-01-21T19:52", "br": "21/01"}, {"p": "Netuno", "a": "oposição", "iso": "2027-04-18T12:50", "br": "18/04"}, {"p": "Urano", "a": "trígono", "iso": "2027-05-14T01:35", "br": "14/05"}, {"p": "Plutão", "a": "trígono", "iso": "2027-09-14T12:05", "br": "14/09"}, {"p": "Netuno", "a": "oposição", "iso": "2027-10-07T02:41", "br": "07/10"}, {"p": "Plutão", "a": "trígono", "iso": "2027-11-19T17:43", "br": "19/11"}], "6": [{"p": "Plutão", "a": "trígono", "iso": "2027-02-23T05:41", "br": "23/02"}, {"p": "Netuno", "a": "oposição", "iso": "2027-05-20T21:04", "br": "20/05"}, {"p": "Urano", "a": "trígono", "iso": "2027-05-31T05:00", "br": "31/05"}, {"p": "Plutão", "a": "trígono", "iso": "2027-07-27T09:45", "br": "27/07"}, {"p": "Netuno", "a": "oposição", "iso": "2027-08-30T12:40", "br": "30/08"}], "7": [{"p": "Plutão", "a": "trígono", "iso": "2027-04-10T14:23", "br": "10/04"}, {"p": "Plutão", "a": "trígono", "iso": "2027-06-05T16:32", "br": "05/06"}, {"p": "Urano", "a": "trígono", "iso": "2027-06-17T13:42", "br": "17/06"}, {"p": "Urano", "a": "trígono", "iso": "2027-12-23T05:10", "br": "23/12"}], "8": [{"p": "Urano", "a": "trígono", "iso": "2027-07-06T08:01", "br": "06/07"}, {"p": "Urano", "a": "trígono", "iso": "2027-11-28T15:02", "br": "28/11"}], "28": [{"p": "Quíron", "a": "oposição", "iso": "2027-03-10T06:43", "br": "10/03"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-07-16T02:29", "br": "16/07"}], "29": [{"p": "Quíron", "a": "oposição", "iso": "2027-03-28T16:39", "br": "28/03"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-07-21T03:21", "br": "21/07"}]}, PESO={"Plutão": 6, "Saturno": 5, "Urano": 4, "Netuno": 4, "Quíron": 3, "Júpiter": 2}, ECL=[{"data": "06/02", "tipo": "Solar anular", "g": 17.617, "casa": 5, "asp": "trígono"}, {"data": "20/02", "tipo": "Lunar penumbral", "g": 2.083, "casa": 12, "asp": "semisextil"}, {"data": "18/07", "tipo": "Lunar penumbral", "g": 25.8, "casa": 4, "asp": "quadratura"}, {"data": "02/08", "tipo": "Solar total", "g": 9.917, "casa": 11, "asp": "sextil"}, {"data": "17/08", "tipo": "Lunar penumbral", "g": 24.183, "casa": 5, "asp": "trígono"}];
+const SIGNO="Libra", IDX=6, DADOS={"9": [{"p": "Saturno", "a": "oposição", "iso": "2027-01-14T10:38", "br": "14/01"}, {"p": "Urano", "a": "trígono", "iso": "2027-07-28T23:17", "br": "28/07"}, {"p": "Urano", "a": "trígono", "iso": "2027-11-03T12:27", "br": "03/11"}], "10": [{"p": "Saturno", "a": "oposição", "iso": "2027-01-28T14:02", "br": "28/01"}], "11": [{"p": "Saturno", "a": "oposição", "iso": "2027-02-08T23:25", "br": "08/02"}], "12": [{"p": "Saturno", "a": "oposição", "iso": "2027-02-18T23:56", "br": "18/02"}], "13": [{"p": "Saturno", "a": "oposição", "iso": "2027-02-28T05:00", "br": "28/02"}], "14": [{"p": "Saturno", "a": "oposição", "iso": "2027-03-08T21:18", "br": "08/03"}], "15": [{"p": "Saturno", "a": "oposição", "iso": "2027-03-17T05:13", "br": "17/03"}], "16": [{"p": "Saturno", "a": "oposição", "iso": "2027-03-25T07:51", "br": "25/03"}], "17": [{"p": "Saturno", "a": "oposição", "iso": "2027-04-02T07:18", "br": "02/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-04-11T06:27", "br": "11/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-04-14T16:03", "br": "14/04"}], "18": [{"p": "Júpiter", "a": "sextil", "iso": "2027-03-18T13:35", "br": "18/03"}, {"p": "Saturno", "a": "oposição", "iso": "2027-04-10T05:31", "br": "10/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-05-08T18:17", "br": "08/05"}], "19": [{"p": "Júpiter", "a": "sextil", "iso": "2027-03-07T14:53", "br": "07/03"}, {"p": "Saturno", "a": "oposição", "iso": "2027-04-18T04:19", "br": "18/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-05-19T20:06", "br": "19/05"}], "20": [{"p": "Júpiter", "a": "sextil", "iso": "2027-02-26T18:27", "br": "26/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-04-26T05:30", "br": "26/04"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-05-28T14:39", "br": "28/05"}], "21": [{"p": "Júpiter", "a": "sextil", "iso": "2027-02-18T19:10", "br": "18/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-05-04T10:58", "br": "04/05"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-05T05:06", "br": "05/06"}], "22": [{"p": "Júpiter", "a": "sextil", "iso": "2027-02-11T04:42", "br": "11/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-05-12T23:06", "br": "12/05"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-12T01:57", "br": "12/06"}, {"p": "Saturno", "a": "oposição", "iso": "2027-11-20T14:37", "br": "20/11"}], "23": [{"p": "Júpiter", "a": "sextil", "iso": "2027-02-03T14:47", "br": "03/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-05-21T21:23", "br": "21/05"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-18T10:46", "br": "18/06"}, {"p": "Saturno", "a": "oposição", "iso": "2027-11-05T04:09", "br": "05/11"}], "24": [{"p": "Júpiter", "a": "sextil", "iso": "2027-01-26T16:44", "br": "26/01"}, {"p": "Saturno", "a": "oposição", "iso": "2027-05-31T10:18", "br": "31/05"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-24T10:43", "br": "24/06"}, {"p": "Saturno", "a": "oposição", "iso": "2027-10-23T01:57", "br": "23/10"}], "25": [{"p": "Júpiter", "a": "sextil", "iso": "2027-01-17T22:19", "br": "17/01"}, {"p": "Saturno", "a": "oposição", "iso": "2027-06-10T21:50", "br": "10/06"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-06-30T03:50", "br": "30/06"}, {"p": "Saturno", "a": "oposição", "iso": "2027-10-10T11:26", "br": "10/10"}], "26": [{"p": "Júpiter", "a": "sextil", "iso": "2027-01-07T04:28", "br": "07/01"}, {"p": "Saturno", "a": "oposição", "iso": "2027-06-22T23:55", "br": "22/06"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-07-05T15:27", "br": "05/07"}, {"p": "Saturno", "a": "oposição", "iso": "2027-09-27T03:48", "br": "27/09"}], "27": [{"p": "Quíron", "a": "oposição", "iso": "2027-02-15T05:18", "br": "15/02"}, {"p": "Saturno", "a": "oposição", "iso": "2027-07-08T11:01", "br": "08/07"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-07-10T22:44", "br": "10/07"}, {"p": "Saturno", "a": "oposição", "iso": "2027-09-11T00:55", "br": "11/09"}], "2": [{"p": "Urano", "a": "trígono", "iso": "2027-01-12T04:38", "br": "12/01"}, {"p": "Netuno", "a": "oposição", "iso": "2027-01-18T15:20", "br": "18/01"}, {"p": "Urano", "a": "trígono", "iso": "2027-03-07T06:36", "br": "07/03"}], "3": [{"p": "Netuno", "a": "oposição", "iso": "2027-02-23T06:12", "br": "23/02"}, {"p": "Urano", "a": "trígono", "iso": "2027-04-05T14:57", "br": "05/04"}], "4": [{"p": "Netuno", "a": "oposição", "iso": "2027-03-22T14:43", "br": "22/03"}, {"p": "Urano", "a": "trígono", "iso": "2027-04-26T02:41", "br": "26/04"}, {"p": "Netuno", "a": "oposição", "iso": "2027-11-22T10:05", "br": "22/11"}], "5": [{"p": "Plutão", "a": "trígono", "iso": "2027-01-21T19:52", "br": "21/01"}, {"p": "Netuno", "a": "oposição", "iso": "2027-04-18T12:50", "br": "18/04"}, {"p": "Urano", "a": "trígono", "iso": "2027-05-14T01:35", "br": "14/05"}, {"p": "Plutão", "a": "trígono", "iso": "2027-09-14T12:05", "br": "14/09"}, {"p": "Netuno", "a": "oposição", "iso": "2027-10-07T02:41", "br": "07/10"}, {"p": "Plutão", "a": "trígono", "iso": "2027-11-19T17:43", "br": "19/11"}], "6": [{"p": "Plutão", "a": "trígono", "iso": "2027-02-23T05:41", "br": "23/02"}, {"p": "Netuno", "a": "oposição", "iso": "2027-05-20T21:04", "br": "20/05"}, {"p": "Urano", "a": "trígono", "iso": "2027-05-31T05:00", "br": "31/05"}, {"p": "Plutão", "a": "trígono", "iso": "2027-07-27T09:45", "br": "27/07"}, {"p": "Netuno", "a": "oposição", "iso": "2027-08-30T12:40", "br": "30/08"}], "7": [{"p": "Plutão", "a": "trígono", "iso": "2027-04-10T14:23", "br": "10/04"}, {"p": "Plutão", "a": "trígono", "iso": "2027-06-05T16:32", "br": "05/06"}, {"p": "Urano", "a": "trígono", "iso": "2027-06-17T13:42", "br": "17/06"}, {"p": "Urano", "a": "trígono", "iso": "2027-12-23T05:10", "br": "23/12"}], "8": [{"p": "Urano", "a": "trígono", "iso": "2027-07-06T08:01", "br": "06/07"}, {"p": "Urano", "a": "trígono", "iso": "2027-11-28T15:02", "br": "28/11"}], "28": [{"p": "Quíron", "a": "oposição", "iso": "2027-03-10T06:43", "br": "10/03"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-07-16T02:29", "br": "16/07"}], "29": [{"p": "Quíron", "a": "oposição", "iso": "2027-03-28T16:39", "br": "28/03"}, {"p": "Júpiter", "a": "sextil", "iso": "2027-07-21T03:21", "br": "21/07"}]}, PESO={"Plutão": 6, "Saturno": 5, "Urano": 4, "Netuno": 4, "Quíron": 3, "Júpiter": 2}, ECL=[{"data": "18/07", "tipo": "Lunar penumbral", "g": 25.8, "casa": 4, "asp": "quadratura"}];
 const CASA={1:'você mesmo',2:'o seu dinheiro',3:'a palavra e o entorno',4:'a casa e a família',5:'a criação e o romance',6:'a rotina e o corpo',7:'o outro e as parcerias',8:'o dinheiro dividido',9:'o horizonte e o estudo',10:'a carreira',11:'os grupos e a rede',12:'os bastidores'};
 
 /* longitude aparente do Sol — precisão de ~0,01º, suficiente para o grau */
@@ -177,7 +192,9 @@ function mostrar(){
   const beira = (g-gi)<0.3 || (g-gi)>0.7;
   const itens=(DADOS[gi]||[]).slice().sort((a,b)=>a.iso<b.iso?-1:1);
   const hoje=new Date().toISOString().slice(0,10);
-  let html=`<p class="grau">Seu Sol está em <b>${SIGNO} ${fmtGrau(g)}</b>${beira?' — perto da virada do grau, vale conferir no seu mapa':''}.</p>`;
+  const MES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  let html=`<p class="lida">Data lida: <b>${D} de ${MES[Mo-1]} de ${Y}</b>. Se não é a sua, corrija no campo acima.</p>`
+         + `<p class="grau">Seu Sol está em <b>${SIGNO} ${fmtGrau(g)}</b>${beira?' — perto da virada do grau, vale conferir no seu mapa':''}.</p>`;
   if(!itens.length){
     html+='<p class="vazio">Nenhum planeta lento toca esse grau em 2027. É um ano de poucos trânsitos exatos para você — e isso também é informação.</p>';
   }else{
@@ -199,12 +216,12 @@ function mostrar(){
   if(fortes.length){
     he+=fortes.map(e=>`<p style="margin:0 0 8px">O <b>${e.tipo.toLowerCase()} de ${e.data}</b> cai a ${orbe(e.dif)} do seu Sol — ${e.asp} na casa ${e.casa}, ${CASA[e.casa]}. Está <b>${forca(e.dif)}</b>.</p>`).join('');
   }else{
-    he+='<p style="margin:0 0 8px">Nenhum dos cinco eclipses de 2027 cai a menos de dois graus e meio do seu Sol. Para você, o ano se decide mais pelos planetas lentos da lista acima do que pelos eclipses.</p>';
+    he+='<p style="margin:0 0 8px">Nenhum eclipse de 2027 faz aspecto tenso a menos de dois graus e meio do seu Sol. Para você, o ano se decide mais pelos planetas lentos da lista acima do que pelos eclipses.</p>';
   }
   if(borda.length){
     he+=`<p class="borda">Ainda dentro da minha margem de cinco graus, mas já na borda: ${borda.map(e=>`${e.tipo.toLowerCase()} de <b>${e.data}</b>, a ${orbe(e.dif)} (${e.asp} na casa ${e.casa})`).join('; ')}.</p>`;
   }
-  he+='<p class="obs">Eu trabalho com uma margem de <b>cinco graus antes e cinco graus depois</b>, porque eclipse é evento forte e alcança mais longe que um trânsito comum. Quanto mais perto do grau exato, maior a chance de o período produzir um acontecimento concreto. Na borda da margem, o mais comum é o assunto mexer por dentro sem que nada se resolva por fora.</p></div>';
+  he+='<div class="obs"><p>Eu só considero relevantes para leitura neste contexto os <b>aspectos tensos</b> dos eclipses — conjunção, quadratura e oposição — com uma margem de <b>5 graus antes, 5 graus depois</b> do grau exato. Quanto mais próximo do grau exato, maior a chance de o período produzir acontecimentos concretos.</p><p>Dos cinco eclipses de 2027, os que não aparecem aqui não fazem aspecto tenso com o <b>seu Sol</b> dentro da minha margem — por isso eu não os trouxe.</p><p>Todos os aspectos de eclipses mencionados consideram somente o <b>seu Sol</b>. Ascendente e descendente são lidos na página do ascendente. Para saber o impacto sobre a sua Lua, Mercúrio, Vênus ou Marte é preciso fazer uma leitura completa com um astrólogo qualificado. Para marcar uma consulta, <a class="zap" href="#" target="_blank" rel="noopener">fale com a Marcelle por WhatsApp</a>.</p></div></div>';
   re.innerHTML=he;
 }
 document.getElementById('btn').addEventListener('click',mostrar);
@@ -221,4 +238,17 @@ tb.innerHTML=Object.keys(DADOS).map(Number).sort((a,b)=>a-b).map(g=>{
   const txt=Object.entries(grupos).map(([k,ds])=>`${k} — ${ds.join(', ')}`).join('<br>');
   return `<tr><td class="g">${g}º</td><td class="d">${(DT[g]||[]).join(' ou ')}</td><td>${txt}</td></tr>`;
 }).join('');
+
+/* O número não aparece escrito em lugar nenhum da página: ele é montado em pedaços na hora
+   do clique. Isso não torna a raspagem impossível, só deixa de entregar o telefone pronto a quem
+   varre a página atrás de um padrão de telefone. */
+const ZAP=['55','21','9880','96387'];
+const acharZap=e=>e.target.closest?e.target.closest('a.zap'):null;
+const ligarZap=a=>{a.href='https://wa.me/'+ZAP.join('')};
+['pointerover','focusin','touchstart'].forEach(ev=>document.addEventListener(ev,e=>{
+  const a=acharZap(e); if(a&&a.getAttribute('href')==='#') ligarZap(a);},{passive:true}));
+document.addEventListener('click',e=>{
+  const a=acharZap(e); if(!a) return;
+  if(a.getAttribute('href')==='#'){e.preventDefault(); ligarZap(a); window.open(a.href,'_blank','noopener');}
+});
 </script>
