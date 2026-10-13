@@ -1,4 +1,4 @@
-<!-- versão: 13/10/2026 13h26 · c9094f5c -->
+<!-- versão: 13/10/2026 13h42 · 44a804f4 -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <meta charset="utf-8">
@@ -46,6 +46,7 @@
     font:400 19px/1 var(--titulo);letter-spacing:.04em;padding:12px 20px}
   button:hover{filter:brightness(1.08)}
   .dica{font-size:13px;color:var(--suave);margin:10px 0 0}
+  .dica a{color:var(--realce);font-weight:600;text-decoration:none;border-bottom:1px solid var(--linha)}
   .res{margin:20px 0 0}
   .grau{font-size:15px;color:var(--suave);margin:0 0 14px}
   .grau b{color:var(--tinta);font-size:19px}
@@ -107,7 +108,7 @@
       <input type="time" id="hora" value="12:00" aria-label="Hora de nascimento">
       <button id="btn">Ver minhas datas</button>
     </div>
-    <p class="dica">O campo de data segue o formato do seu aparelho: no Brasil aparece dia/mês/ano. A hora é opcional — sem ela, uso meio-dia. Perto da virada de um grau, uma hora de diferença muda o resultado.</p>
+    <p class="dica">Informar o horário de nascimento é opcional, mas sem ele eu uso meio-dia. E se você nasceu fora do Brasil, não esqueça de converter seu horário de nascimento para o horário de Brasília. O site <a href="https://www.timeanddate.com/worldclock/converter.html" target="_blank" rel="noopener">timeanddate.com</a> te ajuda com isso.</p>
     <div class="res" id="res"></div>
     <div class="res" id="resecl"></div>
   </div>
@@ -194,7 +195,7 @@ function mostrar(){
   const itens=(DADOS[gi]||[]).slice().sort((a,b)=>a.iso<b.iso?-1:1);
   const hoje=new Date().toISOString().slice(0,10);
   const MES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
-  let html=`<p class="lida">Data lida: <b>${D} de ${MES[Mo-1]} de ${Y}</b>. Se não é a sua, corrija no campo acima.</p>`
+  let html=`<p class="lida">Data lida: <b>${D} de ${MES[Mo-1]} de ${Y}, ${String(H).padStart(2,'0')}:${String(Mi).padStart(2,'0')} (horário de Brasília)</b>. Corrija no campo acima caso esteja incorreto, porque os cálculos foram feitos com base nesses dados.</p>`
          + `<p class="grau">Seu Sol está em <b>${SIGNO} ${fmtGrau(g)}</b>${beira?' — perto da virada do grau, vale conferir no seu mapa':''}.</p>`;
   if(!itens.length){
     html+='<p class="vazio">Nenhum planeta lento toca esse grau em 2027. É um ano de poucos trânsitos exatos para você — e isso também é informação.</p>';
